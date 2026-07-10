@@ -26,7 +26,25 @@ https://aoberoi14.github.io/trip-weather-planner/
 
 ## Screenshot
 
-_Add a screenshot of the board here once deployed._
+![Trip Weather Board screenshot](./screenshot.png)
+
+## How to Run Locally
+
+This is plain HTML, CSS, and JavaScript, no build step and no dependencies to install.
+
+1. Clone the repo:
+```
+git clone https://github.com/aoberoi14/trip-weather-planner.git
+cd trip-weather-planner
+```
+2. Open `index.html` directly in a browser, or run a local static server:
+```
+python3 -m http.server 8000
+```
+3. Then visit:
+```
+http://localhost:8000/
+```
 
 ## Tech
 
@@ -35,4 +53,3 @@ Vanilla HTML, CSS, and JavaScript. No build step, no framework, deployed directl
 ## Project docs
 
 - [PROPOSAL.md](./PROPOSAL.md)
-- [LOG.md](./LOG.md) for weekly progress notes and AI collaboration notes
