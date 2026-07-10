@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trip Weather Board</title>
+<meta name="description" content="Compare live weather across cities you're considering for your next trip, styled like an airport departure board.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="board-frame">
+
+  <header class="board-header">
+    <div class="board-header__top">
+      <span class="board-eyebrow">GATE OPEN</span>
+      <span class="board-clock" id="liveClock">--:--</span>
+    </div>
+    <h1 class="board-title">TRIP WEATHER BOARD</h1>
+    <p class="board-tagline">Add the cities you're weighing for your next trip and see who's got the best conditions right now.</p>
+  </header>
+
+  <section class="ticket-counter" aria-label="Add a city">
+    <form id="searchForm" class="search-form" autocomplete="off">
+      <label for="citySearch" class="visually-hidden">Search for a city</label>
+      <input
+        type="text"
+        id="citySearch"
+        name="citySearch"
+        placeholder="Search a city, e.g. Lisbon"
+        aria-describedby="searchHint"
+        required
+      />
+      <button type="submit" id="searchBtn">Search</button>
+    </form>
+    <p id="searchHint" class="search-hint">Powered by Open-Meteo. No sign up, no key.</p>
+
+    <div id="searchResults" class="search-results" hidden></div>
+    <div id="searchStatus" class="search-status" role="status" aria-live="polite"></div>
+  </section>
+
+  <section class="board-controls">
+    <div class="board-count">
+      <span id="cityCount">0</span> <span class="board-count__label">cities on the board</span>
+    </div>
+    <div class="unit-toggle" role="group" aria-label="Temperature unit">
+      <button type="button" id="unitC" class="unit-btn is-active" data-unit="C">&deg;C</button>
+      <button type="button" id="unitF" class="unit-btn" data-unit="F">&deg;F</button>
+    </div>
+  </section>
+
+  <section class="board-table-wrap">
+    <div class="board-table" id="boardTable">
+      <div class="board-row board-row--head" aria-hidden="true">
+        <span class="col col--city">CITY</span>
+        <span class="col col--temp">NOW</span>
+        <span class="col col--range">3-DAY RANGE</span>
+        <span class="col col--status">STATUS</span>
+        <span class="col col--action"></span>
+      </div>
+      <div id="boardBody" class="board-body">
+        <!-- city rows injected here -->
+      </div>
+    </div>
+
+    <div id="emptyState" class="empty-state">
+      <p class="empty-state__title">The board is empty.</p>
+      <p class="empty-state__body">Search a city above to add it to your trip comparison.</p>
+    </div>
+  </section>
+
+  <section id="detailPanel" class="detail-panel" hidden aria-live="polite">
+    <button type="button" id="closeDetail" class="detail-close" aria-label="Close detail view">&times;</button>
+    <div id="detailContent" class="detail-content"></div>
+  </section>
+
+  <footer class="board-footer">
+    <p>Data from <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>. Built for MP3, OIM 3690.</p>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
